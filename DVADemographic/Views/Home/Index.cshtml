@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Group>
+@*<div class="col-md-12">
+        <a class="btn btn-success mt-5" style="margin: 10px" asp-controller="Group" asp-action="Create"><i class="fas fa-plus-square"></i></a>
+    </div>*@
+
+
+<div class="row p-3" style="background-color: #fff; border-radius: 10px;">
+    <div class="col-md-3">
+        <p>@Html.ActionLink("Create User", "Create", "Person", null, new { @class = "form-control btn btnBlue btn-sm" })</p>
+        <p>@Html.ActionLink("Create Group", "Create", "Group", null, new { @class = "form-control btn btnBlue btn-sm" })</p>
+
+    </div>
+    <div class="col-md-9">
+        @if (Model.Count() == 0)
+        {
+            @Html.Partial("_Empty");
+        }
+        else
+        {
+            <div class="card-deck">
+                @foreach (var group in Model)
+                {
+                    <div class="col-md-6 col-sm-12" style="z-index:1;">
+                        <div class="card mb-3 hoverable effect2">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="card-title">
+                                            @group.Name
+                                            <span>
+                                                <a class="btn btn-info btn-sm" asp-area="" asp-controller="Group" asp-action="Update" asp-route-id="@group.GroupId"><i class="fas fa-edit"></i></a>
+                                                <a class="btn btn-danger btn-sm" asp-controller="Group" asp-action="Delete" asp-route-id="@group.GroupId" title="Delete Group"><i class="fas fa-trash-alt"></i></a>
+
+                                            </span>
+                                        </h5>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p class="card-text">Number of users: @group.Persons.Count()</p>
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Person" asp-action="List" asp-route-groupId="@group.GroupId">View user list</a>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    @*@Html.Partial("_GroupPartial", group)*@
+                }
+            </div>
+        }
+
+
+    </div>
+
+</div>
+
+
+

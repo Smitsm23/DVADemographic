@@ -1,0 +1,156 @@
+﻿@model PersonEditViewModel
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-6 p-3 ">
+        <div class="card">
+            <div class="card-body">
+                <form asp-controller="Person" asp-action="Create" method="post" role="form">
+                    <h3 class="">Create new User</h3>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Person.Group"></label>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        @Html.DropDownListFor(m => m.Person.GroupId, 
+                                            new SelectList(Model.Groups.Select(x => new { Value = x.GroupId, Text = x.Name}), "Value", "Text"), "Select a Group",
+                                            htmlAttributes: new { @class="form-control border-input" }) 
+                                        <span asp-validation-for="Person.Group" class="text-danger"></span>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <a class="btn btn-success" asp-controller="Group" asp-action="Create">Create a Group</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Person.FirstName"></label>
+
+                                <input asp-for="Person.FirstName" class="form-control" placeholder="Enter First name" />
+                                <span asp-validation-for="Person.FirstName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Person.LastName"></label>
+
+                                <input asp-for="Person.LastName" class="form-control" placeholder="Enter First name" />
+                                <span asp-validation-for="Person.LastName" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Person.Address"></label>
+
+                                <input asp-for="Person.Address" class="form-control" placeholder="Enter Address" />
+                                <span asp-validation-for="Person.Address" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label asp-for="Person.City"></label>
+
+                                <input asp-for="Person.City" class="form-control" placeholder="Enter City" />
+                                <span asp-validation-for="Person.City" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Person.State"></label>
+
+                                @Html.DropDownListFor(x => x.Person.State, DVADemographic.Data.State.GetStatesList(), new { @class = "form-control" })
+                                <span asp-validation-for="Person.State" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label asp-for="Person.Zip"></label>
+
+                                <input asp-for="Person.Zip" class="form-control" placeholder="Enter Zip" />
+                                <span asp-validation-for="Person.Zip" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Person.Ethnicity"></label>
+
+                                @Html.DropDownListFor(x => x.Person.Ethnicity, DVADemographic.Data.Ethnicity.GetEthnicList(), new { @class = "form-control" })
+                                <span asp-validation-for="Person.Ethnicity" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Person.Phone"></label>
+
+                                <input asp-for="Person.Phone" class="form-control" placeholder="Enter Phone" />
+                                <span asp-validation-for="Person.Phone" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <label asp-for="Person.Email"></label>
+
+                                <input asp-for="Person.Email" class="form-control" placeholder="Enter Email" />
+                                <span asp-validation-for="Person.Email" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="form-group">
+                                <label asp-for="Person.Age"></label>
+
+                                <input asp-for="Person.Age" class="form-control" placeholder="Enter Age" />
+                                <span asp-validation-for="Person.Age" class="text-danger"></span>
+
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="form-group">
+                                <input class="btn btn-default btn-sm" type="submit" value="Return" asp-controller="Home" asp-action="Index" />
+                                <input class="btn btnBlue btn-sm" type="submit" value="Create User" />
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

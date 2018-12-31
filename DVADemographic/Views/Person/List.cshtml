@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Person>
+
+<div class="row">
+    <div class="col-md-12" style="background-color: #fff;">
+        <a class="btn btnBlue mt-5" style="margin: 10px" asp-controller="Person" asp-action="Create"><i class="fas fa-plus-square"></i> Create new User</a>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Group</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Person person in Model)
+                {
+                    <tr>
+
+                        <td>@person.FirstName </td>
+                        <td>@person.LastName</td>
+                        <td>@person.Email</td>
+                        <td>@person.Group.Name</td>
+                        <td>
+                            <a class="btn btn-secondary btn-sm" asp-area="" asp-controller="Person" asp-action="Detail" asp-route-id="@person.PersonId">View Details</a>
+                            <a class="btn btn-info btn-sm" asp-area="" asp-controller="Person" asp-action="Update" asp-route-id="@person.PersonId"><i class="fas fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger btn-sm" asp-area="" asp-controller="Person" asp-action="Delete" asp-route-id="@person.PersonId"><i class="fas fa-trash"></i> Delete</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="col-md-12">
+            <div class="form-group">
+                <a class="btn btn-secondary btn-sm" asp-controller="Home" asp-action="Index">Return</a>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
